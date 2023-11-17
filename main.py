@@ -15,12 +15,12 @@ guessed_states = []
 while len(guessed_states) < 50:
     answer_state = screen.textinput(f"{len(guessed_states)}/50", "What's another state's name?").title()
     if answer_state == "Exit":
-        missing_states = []
-        for state in list_of_states:
-            if state not in guessed_states:
-                missing_states.append(state)
-        print(missing_states)
-        new_data = pd.DataFrame(missing_states).to_csv("states_to_learn.csv")
+        missing_states = [state for state in list_of_states if state not in guessed_states]
+        # for state in list_of_states:
+        #     if state not in guessed_states:
+        #         missing_states.append(state)
+        # print(missing_states)
+        # new_data = pd.DataFrame(missing_states).to_csv("states_to_learn.csv")
         break
     if answer_state in list_of_states:
         guessed_states.append(answer_state)
